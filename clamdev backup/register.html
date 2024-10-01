@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="logo">
+        <p>sample</p>
+    </div>
+
+    <div class="wrapper1">
+        <form action="register.php" method="post" onsubmit="return validateForm();">
+            <h1>Register</h1>
+            <div class="input-Lname">
+                <p>Last Name</p>
+                <input type="text" name="lname" placeholder="Last Name" required>
+            </div>
+            <div class="input-fname">
+                <p>First Name</p>
+                <input type="text" name="fname" placeholder="First Name" required>
+            </div>
+            <div class="input-mname">
+                <p>Middle Name</p>
+                <input type="text" name="mname" placeholder="Middle Name" required>
+            </div>
+            <div class="input-Idnum">
+                <p>ID Number</p>
+                <input type="text" name="idnum" placeholder="I.D Number" required>
+            </div>
+            <div class="input-college">
+                <p>College</p>
+                <input type="text" name="college" placeholder="College" required>
+            </div>
+            <div class="input-email">
+                <p>E-mail</p>
+                <input type="email" name="email" placeholder="Verify OTP" required>
+            </div>
+            
+            <div class="input-pword">
+                <p>Password</p>
+                <input type="password" id="pword" name="pword" placeholder="Password" required>
+                <i class='bx bx-show eye-icon' id="togglePassword"></i>
+            </div>
+            
+            <div class="input-cpword">
+                <p>Confirm Password</p>
+                <input type="password" id="cpword" name="cpword" placeholder="Confirm Password" required>
+                <i class='bx bx-show eye-icon' id="toggleConfirmPassword"></i>
+            </div>
+            
+            <button type="submit" name="register" class="btnr">Register</button>
+
+            <div id="error-message" class="error-message"></div>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById("pword").value;
+            var confirmPassword = document.getElementById("cpword").value;
+
+            if (password !== confirmPassword) {
+                alert("Passwords do not match! Please try again.");
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+
+        // Toggle password visibility for the password field
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            var passwordInput = document.getElementById("pword");
+            var icon = this;
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                icon.classList.remove('bx-show');
+                icon.classList.add('bx-hide');
+            } else {
+                passwordInput.type = "password";
+                icon.classList.remove('bx-hide');
+                icon.classList.add('bx-show');
+            }
+        });
+
+        // Toggle password visibility for the confirm password field
+        document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+            var confirmPasswordInput = document.getElementById("cpword");
+            var icon = this;
+            if (confirmPasswordInput.type === "password") {
+                confirmPasswordInput.type = "text";
+                icon.classList.remove('bx-show');
+                icon.classList.add('bx-hide');
+            } else {
+                confirmPasswordInput.type = "password";
+                icon.classList.remove('bx-hide');
+                icon.classList.add('bx-show');
+            }
+        });
+    </script>
+
+    <style>
+        body {
+            background: url("plspbg.jpg");
+            background: linear-gradient(#009c4a, #004721);
+        }
+
+        .wrapper1 {
+            position: relative;
+            right: -250px;
+            top: 200px;
+            height: 500px;
+            width: 1000px;
+            background: whitesmoke;
+            border: ridge;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            vertical-align: middle;
+            padding: 30px;
+        }
+
+        .wrapper1 h1 {
+            font-size: 36;
+            position: relative;
+            top: -200px;
+            justify-content: center;
+            background-color: whitesmoke;
+        }
+
+        .wrapper1 .input-Lname {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: (whitesmoke);
+            right: -75px;
+            bottom: -150px;
+        }
+
+        .wrapper1 .input-fname {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            right: -375px;
+            bottom: -69px;
+        }
+
+        .wrapper1 .input-mname {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            bottom: 12px;
+            right: -675px;
+        }
+
+        .wrapper1 .input-Idnum {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            bottom: -50px;
+            right: -75px;
+        }
+
+        .wrapper1 .input-college {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            right: -675px;
+            bottom: 30px;
+        }
+
+        .wrapper1 .input-email {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            bottom: -25px;
+            right: -75px;
+        }
+
+        .wrapper1 .input-pword {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            bottom: 120px;
+            right: -675px;
+        }
+
+        .wrapper1 .input-cpword {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            margin: 30px 0;
+            background-color: whitesmoke;
+            bottom: 138px;
+            right: -675px;
+        }
+
+        .wrapper1 .btnr {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            background-color: whitesmoke;
+            bottom: 150px;
+            right: -380px;
+        }
+
+        .eye-icon {
+            position: relative;
+            right: -3px;
+            top: 4px;
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+
+</body>
+
+</html>
