@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UACompatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClamDev</title>
+   <!-- ======== Styles ========== -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+    <body>
+
+
+      <!--========= Navigation ===================-->
+
+      
+      <div class="container">
+        <div class="navigation">
+            <ul>
+                <li>
+                    <a href="#">
+                        <span class="title">CLAMDEV</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DirectorDashboard.html">
+                        <span class="icon"><ion-icon name="aperture-outline"></ion-icon>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DirectorFaculty.html">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon>
+                        </span>
+                        <span class="title">Faculty</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DirectorAddTask.html">
+                        <span class="icon"><ion-icon name="archive-outline"></ion-icon>
+                        </span>
+                        <span class="title">Add Task</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DirectorEvaluation.html">
+                        <span class="icon"><ion-icon name="star-outline"></ion-icon>
+                        </span>
+                        <span class="title">Evaluation</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DirectorReports.html">
+                        <span class="icon"><ion-icon name="newspaper-outline"></ion-icon>
+                        </span>
+                        <span class="title">Reports</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="DirectorCalerdar.html">
+                        <span class="icon"><ion-icon name="calendar-outline"></ion-icon>
+                        </span>
+                        <span class="title">Calendar</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/index.html">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                        <span class="title">Sign Out</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+      </div> 
+<!--================== Main ===================-->
+<div class="main">
+    <div class="topbar">
+        <div class="toggle">
+            <ion-icon name="menu-outline"></ion-icon>
+        </div>
+
+
+   <!--========== Icon ===========-->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+    </body>
+</html>
+
+<script>
+// add hovered class to selected list item
+let list = document.querySelectorAll(".navigation li");
+
+function activeLink() {
+  list.forEach((item) => {
+    item.classList.remove("hovered");
+  });
+  this.classList.add("hovered");
+}
+
+list.forEach((item) => item.addEventListener("mouseover", activeLink));
+
+
+    let toggle = document.querySelector(".toggle");
+let navigation = document.querySelector(".navigation");
+let main = document.querySelector(".main");
+
+toggle.onclick = function () {
+  navigation.classList.toggle("active");
+  main.classList.toggle("active");
+};
+</script>
+<style>
+
+    /*========= Google Fonts ============ */
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+:root{  
+    --green1: #004D24;
+    --green2: #058743;
+    --green3: #00D062;
+    --green4: #009C4A;
+    --green5: #004721;
+    --white: rgb(255, 255, 255);
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2:#999;
+}
+
+
+body{
+    min-height: 100vh;
+    overflow-x:hidden;
+}
+
+.container{
+    position: relative;
+    width: 100%;
+}
+
+.navigation{
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--green2);
+    border-left: 10px solid var(--green2);
+    transition: .5s;
+    overflow: hidden;
+}
+.navigation.active {
+  width: 80px;
+}
+.navigation ul{
+position:absolute;
+top: 0;
+left: 0;
+width: 100%;
+
+}
+
+.navigation ul li{
+
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+
+    background-color: var(--white);
+}
+.navigation ul li:nth-child(1){
+margin-bottom: 40px;
+pointer-events: none;
+}
+
+.navigation ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: var(--green2);
+
+}
+.navigation ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+.navigation ul li a .icon ion-icon { 
+    font-size: 1.75rem;
+
+}
+.navigation ul li a .title{ 
+    position:relative;
+    display: block;
+    padding:0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+
+}
+/*------ curve outside ------*/
+
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+
+/*================ Main ==============*/
+
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+
+</style>
