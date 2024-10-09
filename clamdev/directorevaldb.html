@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <div class="wrapper2dash">
+        <div>
+            <input class="input-search" type="text" placeholder="Search">
+        </div>
+
+        <p class="profile">Admin/Director</p>
+        <button class="notif-button" type="button"><i class='bx bxs-envelope'></i></button>
+    </div> 
+
+    <div class="wrappermenu">
+        <a href="dashboarddb.html">
+            <button class="Dashboard" type="button"><i class='bx bx-doughnut-chart'></i>Dashboard</button>
+        </a>
+        <a href="directordb.html">
+            <button class="Faculty" type="menu"><i class='bx bx-group'></i>Faculty</button>
+        </a>
+        <a href="directoraddtask.html">
+            <button class="Addtask" type="menu"><i class='bx bx-task'></i>Add Task</button>
+        </a>
+        <a href="directorevaldb.html">
+            <button class="Evaluation" type="menu"><i class='bx bx-star'></i>Evaluation</button>
+        </a>
+        <a href="directorreport.html">
+            <button class="Reports" type="menu"><i class='bx bx-file'></i>Reports</button>
+        </a>
+        <a href="">
+            <button class="Request" type="button"><i class='bx bx-envelope'></i>Request</button>
+        </a>
+        <a href="index.html">
+            <button class="Logout" type="button"><i class='bx bx-lock'></i>Log Out</button>
+        </a>
+    </div>
+
+    <div class="evaltable">
+        <main>
+            <h1>Evaluation</h1>
+            <table id="evalTable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Role</th> <!-- Fixed column for Coordinator -->
+                        <th>Due Date</th>
+                        <th>Submission Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated here by JavaScript -->
+                </tbody>
+            </table>
+        </main>
+    </div>
+</body>
+
+<script>
+    function fetchTaskData() {
+        fetch('fetch_task.php') // Fetch data from PHP script
+            .then(response => response.json())
+            .then(data => {
+                populateTable(data); // Populate the table with the fetched data
+            })
+            .catch(error => console.error('Error fetching task data:', error));
+    }
+    
+    // Function to populate the table with data
+    function populateTable(data) {
+        const tableBody = document.querySelector('#evalTable tbody');
+        tableBody.innerHTML = ''; // Clear existing table data
+    
+        data.forEach(task => {
+            const dueDate = new Date(task.TaskDueDate);
+            const submissionDate = task.Taskdescription ? new Date(task.Taskdescription) : null;
+            const status = getStatus(dueDate, submissionDate);
+    
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${task.UserName}</td> <!-- Display the user's name -->
+                <td>Coordinator</td> <!-- Still using a fixed role for Coordinator -->
+                <td>${dueDate.toLocaleDateString()}</td>
+                <td>${submissionDate ? submissionDate.toLocaleDateString() : 'Not Submitted'}</td>
+                <td><span class="status ${status.class}">${status.text}</span></td>
+            `;
+            tableBody.appendChild(row);
+        });
+    }
+    
+    // Determine the status based on the due and submission dates
+    function getStatus(dueDate, submissionDate) {
+        const currentDate = new Date();
+    
+        if (!submissionDate) {
+            if (currentDate < dueDate) {
+                return { text: 'Pending', class: 'pending' };
+            } else {
+                return { text: 'Late', class: 'late' };
+            }
+        } else if (submissionDate <= dueDate) {
+            return { text: 'On-Time', class: 'on-time' };
+        } else {
+            return { text: 'Late', class: 'late' };
+        }
+    }
+    
+    // Call the fetchTaskData function when the page loads
+    window.onload = function() {
+        fetchTaskData();
+    };
+
+</script>
+
+<style>
+        .wrapper2dash{
+            position: relative;
+            width: auto;
+            height: 75px;
+            background-color: #004721;
+        }
+        
+        .wrappermenu{
+            position: relative;
+            background-color: whitesmoke;
+            left: 3px;
+            width: 150px;
+            height: 650px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+        
+        }
+    
+        .wrappermenu .back{
+            background: whitesmoke;
+            position: inherit;
+            border: none;
+            right: -130px;
+            top: -10px;
+        }
+        .wrappermenu .Dashboard{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -110px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;}
+        
+        .wrappermenu .Faculty{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -110px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+        }
+        .wrappermenu .Calendar{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -110px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;}
+        
+        .wrappermenu .Addtask{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -120px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+        }
+        
+        .wrappermenu .Evaluation{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -130px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+        }
+        
+        .wrappermenu .Reports{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -140px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+        }
+        
+        .wrappermenu .Request{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            bottom: -150px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+            
+        }
+        
+        .wrappermenu .Logout{
+            background: whitesmoke;
+            font-size: 15px;
+            position: relative;
+            bottom: -350px;
+            width: 100%;
+            outline: none;
+            height: 40px;
+            border: ridge;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: ease-out 0.5s;
+        }
+    
+        .wrappermenu .title{
+        
+            position: relative;
+            font-size: 10px;
+            bottom: -130px;
+            right: -15px;
+        
+        }
+        
+        .wrapper2dash .input-search{
+            position: relative;
+            height: 25px;
+            width: 250px;
+            border: ridge;
+            border-radius: 10px;
+            bottom: -30px;
+            right: -200px;
+            background: #009c4a;
+            color: black;
+            border: none;
+        }
+        
+        .wrapper2dash .prof-button{
+            position: relative;
+        }
+        .Dashboard i{
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        .Faculty i {
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        .Addtask i {
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        .Evaluation i {
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        .Calendar i{
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        .Reports i {
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        .Request i {
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        .Logout i {
+            position: relative;
+            right: 10px;
+            font-size: 15px;
+        }
+        
+        ::placeholder{
+            position: relative;
+            color: white;
+            right: -20px;
+        }
+        
+        .wrapper2dash .notif-button{
+            position: relative;
+            border: none;
+            height: 30px;
+            width: 30px;
+            border: none;
+            background: #004721;
+            cursor: pointer;
+            right: -1350px;
+            top: -60px;
+        }
+        
+        .notif-button i {
+            position: inherit;
+            font-size: 40px;
+        }
+        
+        .wrapper2dash .profile{
+            position: relative;
+            right: -1200px;
+            top: 5px;
+            color: white;
+        }
+    
+        .logo{
+            position: absolute;
+            justify-content: center;
+            width: 1000px;
+            height: 100px;
+            background-color: whitesmoke;
+            border: ridge;
+            border-radius: 10px;
+            right: 285px;
+            top: 75px;
+        
+        }
+        .wrappermenu .Dashboard:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Dashboard:active{
+            transform: scale(0.9);
+        }
+    
+        .wrappermenu .Faculty:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Faculty:active{
+            transform: scale(0.9);
+        }
+        
+        .wrappermenu .Addtask:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Addtask:active{
+            transform: scale(0.9);
+            
+        }
+    
+        .wrappermenu .Calendar:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Calendar:active{
+            transform: scale(0.9);
+        }
+        
+        .wrappermenu .Evaluation:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Evaluation:active{
+            transform: scale(0.9);
+        }
+        
+        .wrappermenu .Reports:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Reports:active{
+            transform: scale(0.9);
+        }
+        
+        .wrappermenu .Request:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Request:active{
+            transform: scale(0.9);
+        }
+        
+        .wrappermenu .Logout:hover{
+            color: white;
+            box-shadow: inset 0 -100px 0 0 #009c4a;
+        }
+        
+        .wrappermenu .Logout:active{
+            transform: scale(0.9);
+        }
+    
+        .wrapperfaculty .create{
+            position: relative;
+            height: 150px;
+            width: 350px;
+            border: ridge;
+            border-radius: 15px;
+            cursor: pointer;
+            right: -50px;
+            top: 100px;
+            font-size: 15px;
+        }
+        
+        .wrapperfaculty .faculty{
+            position: relative;
+            right: -50px;
+            top: 50px;
+        }
+        
+        .create i{
+            position: relative;
+            font-size: 60px;
+            top: -15px;
+            right: -50px;
+        }
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: Arial, sans-serif;
+        }
+    
+        .wrapper2dash {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #004721;
+            flex-wrap: wrap;
+        }
+    
+        .input-search {
+            height: 30px;
+            width: 250px;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+            background-color: #009c4a;
+            color: white;
+        }
+    
+        .input-search::placeholder {
+            color: white;
+        }
+    
+        .profile {
+            color: white;
+        }
+    
+        .notif-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    
+        .notif-button i {
+            font-size: 30px;
+            color: white;
+        }
+    
+        .wrappermenu {
+            background-color: whitesmoke;
+            width: 150px;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    
+        .wrappermenu a {
+            text-decoration: none;
+        }
+    
+        .wrappermenu button {
+            width: 100%;
+            background-color: whitesmoke;
+            font-size: 15px;
+            height: 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+        }
+    
+        .wrappermenu button:hover {
+            background-color: #009c4a;
+            color: white;
+        }
+    
+        .evaltable {
+            position: relative;
+            width: 100%;
+            padding: 20px;
+            background-color: whitesmoke;
+            border-radius: 10px;
+            margin: 20px 0;
+            right: -150px;
+            bottom: 690px;
+
+        }
+    
+        main h1 {
+            margin-bottom: 20px;
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+        }
+    
+        .status.on-time {
+            background-color: #4caf50;
+        }
+    
+        .status.pending {
+            background-color: #ffeb3b;
+            color: #333;
+        }
+    
+        .status.late {
+            background-color: #f44336;
+        }
+    
+        /* Responsive Design */
+    
+        @media (max-width: 1024px) {
+            .wrappermenu {
+                width: 130px;
+            }
+    
+            .evaltable {
+                padding: 10px;
+            }
+    
+            .input-search {
+                width: 200px;
+            }
+    
+            table th, table td {
+                padding: 8px;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .wrappermenu {
+                width: 120px;
+                padding: 5px;
+            }
+    
+            .input-search {
+                width: 180px;
+            }
+    
+            .notif-button i {
+                font-size: 25px;
+            }
+    
+            .evaltable {
+                padding: 5px;
+            }
+    
+            table th, table td {
+                padding: 6px;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .wrapper2dash {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+    
+            .wrappermenu {
+                width: 100%;
+                padding: 10px;
+                margin-top: 10px;
+            }
+    
+            .wrappermenu button {
+                font-size: 14px;
+                height: 35px;
+            }
+    
+            .input-search {
+                width: 100%;
+            }
+    
+            .evaltable {
+                width: 100%;
+                padding: 5px;
+            }
+    
+            table th, table td {
+                padding: 5px;
+                font-size: 12px;
+            }
+    
+            .status {
+                padding: 3px 5px;
+            }
+        }
+    </style>
+
