@@ -1,67 +1,82 @@
 <!DOCTYPE html>
+<!---Coding By CodingLab | www.codinglabweb.com--->
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Register</header>
+      <form action="#" class="form">
+        <div class="input-box">
+          <label>Last Name</label>
+          <input type="text" placeholder="Enter Last Name..." required />
+        </div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-</head>
+        <div class="input-box">
+          <label>First Name</label>
+          <input type="text" placeholder="Enter First Name..." required />
+        </div>
 
-<body>
+        <div class="column">
+          <div class="input-box">
+            <label>Middle Name</label>
+            <input type="text" placeholder="Enter Middle Name..." required />
+          </div>
 
-    <div class="logo">
-    </div>
+        </div>
 
-    <div class="wrapper1">
-        <form action="register.php" method="post" onsubmit="return validateForm();">
-            <h1>Register</h1>
-            <div class="input-Lname">
-                <p>Last Name</p>
-                <input type="text" name="lname" placeholder="Last Name" required>
-            </div>
-            <div class="input-fname">
-                <p>First Name</p>
-                <input type="text" name="fname" placeholder="First Name" required>
-            </div>
-            <div class="input-mname">
-                <p>Middle Name</p>
-                <input type="text" name="mname" placeholder="Middle Name" required>
-            </div>
-            <div class="input-Idnum">
-                <p>ID Number</p>
-                <input type="text" name="idnum" placeholder="I.D Number" required>
-            </div>
-            <div class="input-college">
-                <p>College</p>
-                <input type="text" name="college" placeholder="College" required>
-            </div>
-            <div class="input-email">
-                <p>E-mail</p>
-                <input type="email" name="email" placeholder="Verify OTP" required>
-            </div>
-            
-            <div class="input-pword">
-                <p>Password</p>
-                <input type="password" id="pword" name="pword" placeholder="Password" required>
-                <i class='bx bx-show eye-icon' id="togglePassword"></i>
-            </div>
-            
-            <div class="input-cpword">
-                <p>Confirm Password</p>
-                <input type="password" id="cpword" name="cpword" placeholder="Confirm Password" required>
-                <i class='bx bx-show eye-icon' id="toggleConfirmPassword"></i>
-            </div>
-            
-            <button type="submit" name="register" class="btnr">Register</button>
+        <div class="input-box address">
+          <label>E-mail Address</label>
+          <input type="text" placeholder="@gmail.com" required />
 
-            <div id="error-message" class="error-message"></div>
-        </form>
-    </div>
+          <div class="input-box">
+            <label>User I.D</label>
+            <input type="number" placeholder="ID." required />
+          </div>
+          <div class="input-box">
+            <label>Password</label>
+            <input type="password" placeholder="Enter Password..." required />
+          </div>
+          <div class="input-box">
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Confirm Password..." required />
+            <i class='bx bx-show eye-icon' id="togglePassword"></i>
+          </div>
+          <br>
+          <label>E-mail OTP</label>
+          <input type="text" placeholder="Verify OTP" required />
+          <div class="column">
+            <div class="select-box">
+              <select>
+                <option hidden>Department</option>
+                <option>CCST</option>
+                <option>COE</option>
+              </select>
+            </div>
 
-    <script>
+            <div class="select-box">
+                <select>
+                  <option hidden>Program</option>
+                  <option>CCST</option>
+                  <option>COE</option>
+                </select>
+              </div>
+          </div>
+
+        </div>
+        <button>Submit</button>
+      </form>
+    </section>
+  </body>
+</html>
+
+<script>
         function validateForm() {
             var password = document.getElementById("pword").value;
             var confirmPassword = document.getElementById("cpword").value;
@@ -88,160 +103,148 @@
             }
         });
 
-        // Toggle password visibility for the confirm password field
-        document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
-            var confirmPasswordInput = document.getElementById("cpword");
-            var icon = this;
-            if (confirmPasswordInput.type === "password") {
-                confirmPasswordInput.type = "text";
-                icon.classList.remove('bx-show');
-                icon.classList.add('bx-hide');
-            } else {
-                confirmPasswordInput.type = "password";
-                icon.classList.remove('bx-hide');
-                icon.classList.add('bx-show');
-            }
-        });
-    </script>
-
-    <style>
-        body {
-            background: url("plspbg.jpg");
-            background: linear-gradient(#009c4a, #004721);
-        }
-
-        body {
-    display: flex; /* Make the body a flex container */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full viewport height */
-    margin: 0; /* Remove default body margin */
+</script>
+<style>
+    /* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+:root{  
+    --green1: #004D24;
+    --green2: #058743;
+    --green3: #00D062;
+    --green4: #009C4A;
+    --green5: #004721;
+    --white: rgb(255, 255, 255);
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2:#999;
 }
 
-/* Updated .wrapper1 styles */
-.wrapper1 {
-    position: relative;
-    height: 700px; /* Allow height to adjust with content */
-    width: 80%; /* Use a percentage for responsiveness */
-    max-width: 1000px; /* Keep a max width */
-    background: whitesmoke;
-    border: 1px solid #ccc; /* Adjusted border */
-    border-radius: 10px;
-    display: flex; /* Flexbox for children */
-    align-items: center; /* Vertical alignment in flex */
-    padding: 30px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
-        .wrapper1 h1 {
-            font-size: 36px;
-            position: relative;
-            top: 10px;
-            justify-content: center;
-            background-color: whitesmoke;
-        }
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-image: linear-gradient(var(--green3), var(--green5));
+}
+.container {
+  position: relative;
+  max-width: 700px;
+  width: 100%;
+  background: #fff;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+.container header {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+.container .form {
+  margin-top: 30px;
+}
+.form .input-box {
+  width: 100%;
+  margin-top: 20px;
+}
+.input-box label {
+  color: #333;
+}
+.form :where(.input-box input, .select-box) {
+  position: relative;
+  height: 50px;
+  width: 100%;
+  outline: none;
+  font-size: 1rem;
+  color: #707070;
+  margin-top: 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0 15px;
+}
+.input-box input:focus {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+.form .column {
+  display: flex;
+  column-gap: 15px;
+}
+.form .gender-box {
+  margin-top: 20px;
+}
+.gender-box h3 {
+  color: #333;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.form :where(.gender-option, .gender) {
+  display: flex;
+  align-items: center;
+  column-gap: 50px;
+  flex-wrap: wrap;
+}
+.form .gender {
+  column-gap: 5px;
+}
+.gender input {
+  accent-color: var(--green4);
+}
+.form :where(.gender input, .gender label) {
+  cursor: pointer;
+}
+.gender label {
+  color: #707070;
+}
+.address :where(input, .select-box) {
+  margin-top: 15px;
+}
+.select-box select {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: #707070;
+  font-size: 1rem;
+}
+.form button {
+  height: 55px;
+  width: 100%;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 400;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  background-color: #009C4A;
+}
+.form button:hover {
+  background: var(--green5);
+}
 
-        .wrapper1 .input-Lname {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 20px 0;
-            background-color: (whitesmoke);
-            right: -20px;
-            bottom: -50px;
-        }
-
-        .wrapper1 .input-fname {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            right: -375px;
-            bottom: -69px;
-        }
-
-        .wrapper1 .input-mname {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            bottom: 12px;
-            right: -675px;
-        }
-
-        .wrapper1 .input-Idnum {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            bottom: -50px;
-            right: -75px;
-        }
-
-        .wrapper1 .input-college {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            right: -675px;
-            bottom: 30px;
-        }
-
-        .wrapper1 .input-email {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            bottom: -25px;
-            right: -75px;
-        }
-
-        .wrapper1 .input-pword {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            bottom: 120px;
-            right: -675px;
-        }
-
-        .wrapper1 .input-cpword {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            margin: 30px 0;
-            background-color: whitesmoke;
-            bottom: 138px;
-            right: -675px;
-        }
-
-        .wrapper1 .btnr {
-            position: relative;
-            width: 100%;
-            height: 50px;
-            background-color: whitesmoke;
-            bottom: 150px;
-            right: -380px;
-        }
-
-        .eye-icon {
+.eye-icon {
             position: relative;
             right: -3px;
             top: 4px;
             cursor: pointer;
         }
-
-        .error-message {
-            color: red;
-            display: none;
-            margin-top: 10px;
-        }
-    </style>
-
-</body>
-
-</html>
+/*Responsive*/
+@media screen and (max-width: 500px) {
+  .form .column {
+    flex-wrap: wrap;
+  }
+  .form :where(.gender-option, .gender) {
+    row-gap: 15px;
+  }
+}
+</style>

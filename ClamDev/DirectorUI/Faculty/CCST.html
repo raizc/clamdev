@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UACompatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClamDev</title>
+
+
+</head>
+
+<body>
+    <div class="tablelist">
+        <div class="logocontainer">
+            <img class="logo" src="ccst logo.png" alt="">
+        </div>
+        <div class="department">
+            <h1 class="deptname"></h1>
+        </div>
+    <div class="tablecontainer">
+        <section class="coordinator-section">
+            <h2>Coordinator</h2>
+            <table class="coordinator-table">
+                <thead>
+                    <tr>
+                        <th>I.D Number</th>
+                        <th>Name</th>
+                        <th>College</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="coordinator-body">
+                    <!-- Coordinator data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="teachers-section">
+            <h2>List of Lead Instructors</h2>
+            <table class="teachers-table">
+                <thead>
+                    <tr>
+                        <th>I.D Number</th>
+                        <th>Name</th>
+                        <th>College</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="teachers-body">
+                    <!-- Lead Instructor data will be populated here -->
+                </tbody>
+            </table>
+        </section>
+        </div>
+        <a href="/DirectorUI/DirectorDept.html"></a>
+    <div class="button">
+        <button>
+            Back
+        </button>
+    </div>
+        </a>
+</body>
+
+<style>
+    .tablelist{
+        position: relative;
+        width: 1340px;
+        height: 650px;
+        background-color: whitesmoke;
+        border: ridge;
+        border-radius: 10px;
+        right: -30px;
+        top: 30px
+    }
+    
+    .sub{
+        position: relative;
+        right: -170px;
+        top: -650px;
+        background-color: whitesmoke;
+        width: 1340px;
+        height: 650px;
+        border: ridge;
+        border-radius: 10px;
+        border: none;
+    }
+    table {
+        width: 95%;
+        margin-top: 20px;
+        border: ridge;
+        border-radius: 10px 0;
+        border-collapse: collapse;
+
+    }
+    
+    th, td {
+        border:  solid #ccc;
+        padding: 10px;
+        text-align: center;
+
+    }
+    
+    .coordinator-section, .teachers-section {
+        margin-top: 40px;
+        position: relative;
+        top: 150px;
+        right: -50px;
+        border: rid;
+    }
+    
+    img {
+        width: 20px;
+        cursor: pointer;
+    }
+    .tablelist .logo{
+        width: 175px;
+        height: 175px;
+        left: 35px;
+        top: 15px;
+        border: none;
+
+    }
+
+    .department .deptname{
+        position: relative;
+        font-size: 40px;
+        left: 225px;
+        top: 50px;
+    }
+
+    .tablecontainer{
+        position: relative;
+        width: auto;
+        height: auto;
+        border: none;
+        border-radius: 10px 0;
+    }
+    .button{
+        cursor: pointer;
+        margin: 175px;
+        margin-left: 1250px;
+    }   
+</style>

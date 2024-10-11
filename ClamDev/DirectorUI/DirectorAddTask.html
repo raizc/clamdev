@@ -1,305 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UACompatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClamDev</title>
-   <!-- ======== Styles ========== -->
-    <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
-    <body>
+<body>
+    <div class="task-form">
+        <h1 class="addtaskh1">Add Task</h1>
+        <form action="add_task.php" method="POST">
+            <div class="taskcontainer">
+                <div class="task-section">
+                    <input type="text" placeholder="Type Task Name..." required>
+                    <br>
+                    <label class="task1">
+                        <input type="radio" name="task" value="Course Syllabus"> Course Syllabus
+                    </label>
+                    <label class="task1">
+                        <input type="radio" name="task" value="Mid-Term Exams"> Mid-Term Exams
+                    </label>
+                    <label class="task1">
+                        <input type="radio" name="task" value="Final Exams"> Final Exams
+                    </label>
+                    <label class="task1">
+                        <input type="radio" name="task" value="Others">
+                        Others: <input id="other-task" name="other_task" type="text" placeholder="Type here...">
+                        <br>
+                    </label>
+                    <label class="task1">
+                        <h3>
+                            Task Description
+                        </h3>
+                        <input type="text" placeholder="Description...">
+                    </label>
+                </div>    
+            </div>
+            <div class="date-section">
+                <h2 class="duedateh2">Add Due Date</h2>
+                <input id="due-date" name="due_date" class="date" type="date" required>
+            </div>
+            <button class="add-button" type="submit">Add</button>
+        </form>
+    </div>
+</body>
 
-
-      <!--========= Navigation ===================-->
-
-      
-      <div class="container">
-        <div class="navigation">
-            <ul>
-                <li>
-                    <a href="#">
-                        <span class="title">CLAMDEV</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="DirectorDashboard.html">
-                        <span class="icon"><ion-icon name="aperture-outline"></ion-icon>
-                        </span>
-                        <span class="title">Dashboard</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="DirectorFaculty.html">
-                        <span class="icon"><ion-icon name="people-outline"></ion-icon>
-                        </span>
-                        <span class="title">Faculty</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="DirectorAddTask.html">
-                        <span class="icon"><ion-icon name="archive-outline"></ion-icon>
-                        </span>
-                        <span class="title">Add Task</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="DirectorEvaluation.html">
-                        <span class="icon"><ion-icon name="star-outline"></ion-icon>
-                        </span>
-                        <span class="title">Evaluation</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="DirectorReports.html">
-                        <span class="icon"><ion-icon name="newspaper-outline"></ion-icon>
-                        </span>
-                        <span class="title">Reports</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="DirectorCalerdar.html">
-                        <span class="icon"><ion-icon name="calendar-outline"></ion-icon>
-                        </span>
-                        <span class="title">Calendar</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="/index.html">
-                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon>
-                        </span>
-                        <span class="title">Sign Out</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-      </div> 
-<!--================== Main ===================-->
-<div class="main">
-    <div class="topbar">
-        <div class="toggle">
-            <ion-icon name="menu-outline"></ion-icon>
-        </div>
-
-
-   <!--========== Icon ===========-->
-
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-
-    </body>
-</html>
-
-<script>
-// add hovered class to selected list item
-let list = document.querySelectorAll(".navigation li");
-
-function activeLink() {
-  list.forEach((item) => {
-    item.classList.remove("hovered");
-  });
-  this.classList.add("hovered");
-}
-
-list.forEach((item) => item.addEventListener("mouseover", activeLink));
-
-
-    let toggle = document.querySelector(".toggle");
-let navigation = document.querySelector(".navigation");
-let main = document.querySelector(".main");
-
-toggle.onclick = function () {
-  navigation.classList.toggle("active");
-  main.classList.toggle("active");
-};
-</script>
 <style>
-
-    /*========= Google Fonts ============ */
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-
-* {
-    font-family: "Ubuntu", sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
+.task-form {
+    margin-top: 650px;
+    margin-right:50px;
+    background-color: #ffffff;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+    
 }
 
-:root{  
-    --green1: #004D24;
-    --green2: #058743;
-    --green3: #00D062;
-    --green4: #009C4A;
-    --green5: #004721;
-    --white: rgb(255, 255, 255);
-    --gray: #f5f5f5;
-    --black1: #222;
-    --black2:#999;
-}
-
-
-body{
-    min-height: 100vh;
-    overflow-x:hidden;
-}
-
-.container{
-    position: relative;
-    width: 100%;
-}
-
-.navigation{
-    position: fixed;
-    width: 300px;
-    height: 100%;
-    background: var(--green2);
-    border-left: 10px solid var(--green2);
-    transition: .5s;
-    overflow: hidden;
-}
-.navigation.active {
-  width: 80px;
-}
-.navigation ul{
-position:absolute;
-top: 0;
-left: 0;
-width: 100%;
-
-}
-
-.navigation ul li{
-
-    position: relative;
-    width: 100%;
-    list-style: none;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 30px;
-}
-
-.navigation ul li:hover,
-.navigation ul li.hovered {
-
-    background-color: var(--white);
-}
-.navigation ul li:nth-child(1){
-margin-bottom: 40px;
-pointer-events: none;
-}
-
-.navigation ul li a{
-    position: relative;
-    display: block;
-    width: 100%;
-    display: flex;
-    text-decoration: none;
-    color: var(--white);
-
-}
-
-.navigation ul li:hover a,
-.navigation ul li.hovered a {
-    color: var(--green2);
-
-}
-.navigation ul li a .icon {
-    position: relative;
-    display: block;
-    min-width: 60px;
-    height: 60px;
-    line-height: 75px;
+.addtaskh1 {
     text-align: center;
-}
-.navigation ul li a .icon ion-icon { 
-    font-size: 1.75rem;
-
-}
-.navigation ul li a .title{ 
-    position:relative;
-    display: block;
-    padding:0 10px;
-    height: 60px;
-    line-height: 60px;
-    text-align: start;
-    white-space: nowrap;
-
-}
-/*------ curve outside ------*/
-
-.navigation ul li:hover a::before,
-.navigation ul li.hovered a::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px 35px 0 10px var(--white);
-  pointer-events: none;
-}
-.navigation ul li:hover a::after,
-.navigation ul li.hovered a::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: -50px;
-  width: 50px;
-  height: 50px;
-  background-color: transparent;
-  border-radius: 50%;
-  box-shadow: 35px -35px 0 10px var(--white);
-  pointer-events: none;
+    color: #333;
 }
 
+.task-section,
+.date-section {
+    margin-bottom: 30px;
+    display: grid;
 
-/*================ Main ==============*/
-
-.main {
-  position: absolute;
-  width: calc(100% - 300px);
-  left: 300px;
-  min-height: 100vh;
-  background: var(--white);
-  transition: 0.5s;
-}
-.main.active {
-  width: calc(100% - 80px);
-  left: 80px;
 }
 
-.topbar {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
+.taskh2,
+.duedateh2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
 }
 
-.toggle {
-  position: relative;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2.5rem;
-  cursor: pointer;
+.taskcontainer {
+    width: 500px;
+    height: 300px;
+
+    
 }
 
+.task1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 5px;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus {
+    border-color: #3a3a3a;
+    outline: none;
+}
+
+.add-button {
+    background-color: #00990a;
+    color: white;   
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+.add-button:hover {
+    background-color: #1de137;
+}
 
 </style>
+</html>
